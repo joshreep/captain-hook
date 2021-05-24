@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks'
 
-import useToggle from './index'
+import useToggle from '.'
 
 type SetupProps = {
     initialValue?: boolean
