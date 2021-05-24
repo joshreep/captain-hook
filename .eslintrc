@@ -1,12 +1,24 @@
 {
+    "env": { "node": true },
     "root": true,
     "parser": "@typescript-eslint/parser",
-    // "parserOptions": {"tsconfigRootDir": "__dirname", "project": ["./tsconfig.json"]},
+    "parserOptions": { "tsconfigRootDir": "./", "project": ["./tsconfig.json"] },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
     "plugins": ["@typescript-eslint"],
     "extends": [
-        "eslint-recommended",
+        "eslint:recommended",
         "plugin:prettier/recommended",
         "plugin:@typescript-eslint/recommended",
-        "plugin:@typescript-eslint/recommended-requiring-type-checking"
-    ]
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:react-hooks/recommended",
+        "plugin:react/recommended",
+        "plugin:jest/style"
+    ],
+    "rules": {
+        "@typescript-eslint/explicit-module-boundary-types": "off"
+    }
 }
