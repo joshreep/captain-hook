@@ -1,7 +1,7 @@
-import { Dispatch, SetStateAction, useState } from 'react'
+import { SetStateAction, useState } from 'react'
 import useIsMounted from '../useIsMounted'
 
-export default function useMountedState<T>(initialState: T): [T, Dispatch<SetStateAction<T>>] {
+export default function useMountedState<T>(initialState: T) {
     const [state, setState] = useState<T>(initialState)
     const isMounted = useIsMounted()
 
@@ -12,5 +12,5 @@ export default function useMountedState<T>(initialState: T): [T, Dispatch<SetSta
         }
     }
 
-    return [state, setStateIfMounted]
+    return [state, setStateIfMounted] as const
 }

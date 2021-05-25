@@ -1,5 +1,6 @@
 export { default as useAsync } from './useAsync'
 export { default as useIsMounted } from './useIsMounted'
+export { default as useLocalStorage } from './useLocalStorage'
 export { default as useMemoCompare, MemoCompareFunction } from './useMemoCompare'
 export { default as useMountedState } from './useMountedState'
 export { default as useToggle } from './useToggle'

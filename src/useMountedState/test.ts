@@ -7,40 +7,38 @@ function setup<T>(initialState: T) {
     return { ...utils }
 }
 
-describe('useMountedState', () => {
-    test('should set initialState', () => {
-        const { result } = setup('foo')
-        expect(result.current[0]).toBe('foo')
+test('should set initialState', () => {
+    const { result } = setup('foo')
+    expect(result.current[0]).toBe('foo')
+})
+
+test('should setState if component is mounted', () => {
+    const { result } = setup('foo')
+
+    act(() => {
+        result.current[1]('bar')
     })
 
-    test('should setState if component is mounted', () => {
-        const { result } = setup('foo')
+    expect(result.current[0]).toBe('bar')
+})
 
-        act(() => {
-            result.current[1]('bar')
-        })
+test('should not setState if component is not mounted', () => {
+    const { result, unmount } = setup('foo')
 
-        expect(result.current[0]).toBe('bar')
+    unmount()
+    act(() => {
+        result.current[1]('bar')
     })
 
-    test('should not setState if component is not mounted', () => {
-        const { result, unmount } = setup('foo')
+    expect(result.current[0]).toBe('foo')
+})
 
-        unmount()
-        act(() => {
-            result.current[1]('bar')
-        })
+test('should be able to pass in a dispatch function', () => {
+    const { result } = setup('foo')
 
-        expect(result.current[0]).toBe('foo')
+    act(() => {
+        result.current[1]((previous) => previous + 'bar')
     })
 
-    test('should be able to pass in a dispatch function', () => {
-        const { result } = setup('foo')
-
-        act(() => {
-            result.current[1]((previous) => previous + 'bar')
-        })
-
-        expect(result.current[0]).toBe('foobar')
-    })
+    expect(result.current[0]).toBe('foobar')
 })

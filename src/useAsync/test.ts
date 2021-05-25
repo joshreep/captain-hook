@@ -43,67 +43,65 @@ function setupFailure<T>({ immediate, timeout = 0 }: SetupFailureProps<T> = {}) 
     return { asyncFunction, ...utils }
 }
 
-describe('useAsync', () => {
-    test('should call execute on mount if immediate is true', () => {
-        const { asyncFunction } = setupSuccess()
+test('should call execute on mount if immediate is true', () => {
+    const { asyncFunction } = setupSuccess()
 
-        expect(asyncFunction).not.toHaveBeenCalled()
+    expect(asyncFunction).not.toHaveBeenCalled()
+})
+
+test('should not call execute on mount if immediate is false', async () => {
+    await act(async () => {
+        const { asyncFunction, waitFor } = setupSuccess({ immediate: true })
+
+        await waitFor(() => expect(asyncFunction).toHaveBeenCalledTimes(1))
     })
+})
 
-    test('should not call execute on mount if immediate is false', async () => {
-        await act(async () => {
-            const { asyncFunction, waitFor } = setupSuccess({ immediate: true })
+test('should return values for Status.Idle', () => {
+    const { result } = setupSuccess()
 
-            await waitFor(() => expect(asyncFunction).toHaveBeenCalledTimes(1))
-        })
+    expect(result.current.execute).toBeInstanceOf(Function)
+    expect(result.current.error).toBeNull()
+    expect(result.current.status).toBe(Status.Idle)
+    expect(result.current.value).toBeNull()
+})
+
+test('should return values for Status.Pending', async () => {
+    const { result, waitFor } = setupSuccess({ timeout: 10 })
+
+    act(() => {
+        result.current.execute()
     })
+    await waitFor(() => result.current.status === Status.Pending)
 
-    test('should return values for Status.Idle', () => {
-        const { result } = setupSuccess()
+    expect(result.current.status).toBe(Status.Pending)
+    expect(result.current.value).toBeNull()
+    expect(result.current.error).toBeNull()
+})
 
-        expect(result.current.execute).toBeInstanceOf(Function)
-        expect(result.current.error).toBeNull()
-        expect(result.current.status).toBe(Status.Idle)
-        expect(result.current.value).toBeNull()
+test('should return values for Status.Success', async () => {
+    const { result, waitFor } = setupSuccess({ timeout: 10 })
+
+    act(() => {
+        result.current.execute()
     })
+    await waitFor(() => result.current.status === Status.Success)
 
-    test('should return values for Status.Pending', async () => {
-        const { result, waitFor } = setupSuccess({ timeout: 10 })
+    expect(result.current.status).toBe(Status.Success)
+    expect(result.current.value).toBe('foo')
+    expect(result.current.error).toBeNull()
+})
 
-        act(() => {
-            result.current.execute()
-        })
-        await waitFor(() => result.current.status === Status.Pending)
+test('should return values for Status.Error', async () => {
+    const { result, waitFor } = setupFailure({ timeout: 10 })
 
-        expect(result.current.status).toBe(Status.Pending)
-        expect(result.current.value).toBeNull()
-        expect(result.current.error).toBeNull()
+    act(() => {
+        result.current.execute()
     })
+    await waitFor(() => result.current.status === Status.Error)
 
-    test('should return values for Status.Success', async () => {
-        const { result, waitFor } = setupSuccess({ timeout: 10 })
-
-        act(() => {
-            result.current.execute()
-        })
-        await waitFor(() => result.current.status === Status.Success)
-
-        expect(result.current.status).toBe(Status.Success)
-        expect(result.current.value).toBe('foo')
-        expect(result.current.error).toBeNull()
-    })
-
-    test('should return values for Status.Error', async () => {
-        const { result, waitFor } = setupFailure({ timeout: 10 })
-
-        act(() => {
-            result.current.execute()
-        })
-        await waitFor(() => result.current.status === Status.Error)
-
-        expect(result.current.status).toBe(Status.Error)
-        expect(result.current.value).toBeNull()
-        expect(result.current.error).toBeInstanceOf(Error)
-        expect(result.current.error?.message).toBe('bummer...')
-    })
+    expect(result.current.status).toBe(Status.Error)
+    expect(result.current.value).toBeNull()
+    expect(result.current.error).toBeInstanceOf(Error)
+    expect(result.current.error?.message).toBe('bummer...')
 })

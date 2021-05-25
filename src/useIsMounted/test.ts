@@ -7,17 +7,15 @@ function setup() {
     return { ...utils }
 }
 
-describe('useIsMounted', () => {
-    test('should return  once component has mounted', () => {
-        const { result } = setup()
+test('should return  once component has mounted', () => {
+    const { result } = setup()
 
-        expect(result.current.current).toBe(true)
-    })
+    expect(result.current.current).toBe(true)
+})
 
-    test('should return false once the component has un-mounted', () => {
-        const { result, unmount } = setup()
+test('should return false once the component has un-mounted', () => {
+    const { result, unmount } = setup()
 
-        unmount()
-        expect(result.current.current).toBe(false)
-    })
+    unmount()
+    expect(result.current.current).toBe(false)
 })
