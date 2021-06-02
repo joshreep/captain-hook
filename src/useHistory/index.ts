@@ -29,21 +29,23 @@ function reducer<T>(state: State<T>, action: Action<T>) {
     const { past, present, future } = state
 
     switch (action.type) {
-        case ActionType.Undo:
+        case ActionType.Undo: {
             return {
                 past: past.slice(0, past.length - 1),
                 present: past[past.length - 1],
                 future: [present, ...future],
             }
+        }
 
-        case ActionType.Redo:
+        case ActionType.Redo: {
             return {
                 past: [...past, present],
                 present: future[0],
                 future: future.slice(1),
             }
+        }
 
-        case ActionType.Set:
+        case ActionType.Set: {
             const { newPresent } = action
             if (newPresent === present) return state
 
@@ -52,14 +54,16 @@ function reducer<T>(state: State<T>, action: Action<T>) {
                 present: newPresent,
                 future: [],
             }
+        }
 
-        case ActionType.Clear:
+        case ActionType.Clear: {
             const { initialPresent } = action
 
             return {
                 ...initialState,
                 present: initialPresent,
             }
+        }
     }
 }
 
