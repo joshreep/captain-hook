@@ -1,12 +1,7 @@
 import { useCallback, useEffect } from 'react'
 import useMountedState from '../useMountedState'
 
-export enum Status {
-    Idle,
-    Pending,
-    Success,
-    Error,
-}
+import { Status } from '../constants'
 
 export default function useAsync<T, E extends Error>(asyncFunction: () => Promise<T>, immediate = true) {
     const [status, setStatus] = useMountedState<Status>(Status.Idle)
@@ -28,6 +23,7 @@ export default function useAsync<T, E extends Error>(asyncFunction: () => Promis
                 setError(error)
                 setStatus(Status.Error)
             })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [asyncFunction])
 
     useEffect(() => {
