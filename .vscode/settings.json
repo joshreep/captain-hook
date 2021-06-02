@@ -1,4 +1,6 @@
 {
-    "eslint.lintTask.enable": true,
-    "eslint.format.enable": true
+    "eslint.alwaysShowStatus": true,
+    "eslint.packageManager": "yarn",
+    "eslint.trace.server": "messages",
+    "eslint.validate": ["typescript", "typescriptreact"]
 }
