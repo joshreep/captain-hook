@@ -41,7 +41,7 @@ export default function useEventListener<T extends Element>(
 
 | Prop      | Type                 | Default Value | Required | Description                                                                     |
 | --------- | -------------------- | ------------- | -------- | ------------------------------------------------------------------------------- |
-| eventName | `string`             |               | `true`   | Any valid event name                                                            |
-| handler   | `(e: Event) => void` |               | `true`   | Event handler                                                                   |
-| element   | `Element`, `window`  | `window`      | `false`  | Element to bind the event listener on                                           |
-| condition | `boolean`            | `true`        | `false`  | If condition is false, then the event listener will not be bound to the element |
+| eventName | `string`             |               | Yes      | Any valid event name                                                            |
+| handler   | `(e: Event) => void` |               | Yes      | Event handler                                                                   |
+| element   | `Element`, `window`  | `window`      | No       | Element to bind the event listener on                                           |
+| condition | `boolean`            | `true`        | No       | If condition is false, then the event listener will not be bound to the element |
