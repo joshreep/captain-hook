@@ -33,4 +33,4 @@ export default function useAsync<T, E extends Error>(asyncFunction: () => Promis
     return { execute, error, status, value }
 }
 
-useAsync.Status = Status
+export { Status }

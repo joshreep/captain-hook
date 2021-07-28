@@ -2,12 +2,16 @@ import { renderHook } from '@testing-library/react-hooks'
 import fireEvent from '@testing-library/user-event'
 import useEventListener from '.'
 
-function setup() {
+type SetupProps = {
+    condition?: boolean
+}
+
+function setup({ condition }: SetupProps = {}) {
     const handlerSpy = jest.fn()
     const addEventListenerSpy = jest.spyOn(window, 'addEventListener')
     const removeEventListenerSpy = jest.spyOn(window, 'removeEventListener')
 
-    const utils = renderHook(() => useEventListener('click', handlerSpy, window))
+    const utils = renderHook(() => useEventListener('click', handlerSpy, window, condition))
 
     function cleanup() {
         addEventListenerSpy.mockRestore()
@@ -37,6 +41,17 @@ test('should remove eventListener ', () => {
 
     unmount()
     expect(removeEventListenerSpy).toHaveBeenCalledWith('click', expect.any(Function))
+
+    cleanup()
+})
+
+test('should do nothing if condition is false', () => {
+    const { addEventListenerSpy, removeEventListenerSpy, unmount, cleanup } = setup({ condition: false })
+
+    expect(addEventListenerSpy).not.toHaveBeenCalledWith('click', expect.any(Function))
+
+    unmount()
+    expect(removeEventListenerSpy).not.toHaveBeenCalledWith('click', expect.any(Function))
 
     cleanup()
 })

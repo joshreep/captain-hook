@@ -19,10 +19,14 @@ type State<T> = {
     future: T[]
 }
 
-const initialState = {
-    past: [],
-    present: null,
-    future: [],
+type Reducer<T> = (state: State<T>, action: Action<T>) => State<T>
+
+function getInitialState<T>(initialPresent: T): State<T> {
+    return {
+        past: [],
+        present: initialPresent,
+        future: [],
+    }
 }
 
 function reducer<T>(state: State<T>, action: Action<T>) {
@@ -59,16 +63,13 @@ function reducer<T>(state: State<T>, action: Action<T>) {
         case ActionType.Clear: {
             const { initialPresent } = action
 
-            return {
-                ...initialState,
-                present: initialPresent,
-            }
+            return getInitialState(initialPresent)
         }
     }
 }
 
 export default function useHistory<T>(initialPresent: T) {
-    const [state, dispatch] = useReducer(reducer, { ...initialState, present: initialPresent })
+    const [state, dispatch] = useReducer<Reducer<T>>(reducer, getInitialState<T>(initialPresent))
 
     const canUndo = state.past.length !== 0
     const canRedo = state.future.length !== 0

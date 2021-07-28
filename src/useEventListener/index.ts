@@ -1,19 +1,20 @@
 import { useCallback, useEffect } from 'react'
 
-const useEventListener = <T extends HTMLElement>(
+const useEventListener = <T extends Element>(
     eventName: string,
     handler: EventListener,
-    element: T | (Window & typeof globalThis) = window
+    element: T | (Window & typeof globalThis) = window,
+    condition = true
 ) => {
     const eventListener = useCallback((event: Event) => handler(event), [handler])
 
     useEffect(() => {
-        element.addEventListener?.(eventName, eventListener)
+        if (condition) element.addEventListener?.(eventName, eventListener)
 
         return () => {
-            element.removeEventListener?.(eventName, eventListener)
+            if (condition) element.removeEventListener?.(eventName, eventListener)
         }
-    }, [element, eventListener, eventName])
+    }, [element, eventListener, eventName, condition])
 }
 
 export default useEventListener

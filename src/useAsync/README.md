@@ -39,14 +39,14 @@ export default function useAsync<T, E extends Error>(
 
 | Prop          | Type            | Default Value | Required | Comments                                                                     |
 | ------------- | --------------- | ------------- | -------- | ---------------------------------------------------------------------------- |
-| asyncFunction | `() => Promise` |               | Yes      |                                                                              |
+| asyncFunction | `() => Promise` |               | Yes      | An asynchronous function to be used by the hook                              |
 | immediate     | `boolean`       | `true`        | No       | If `true`, it will call the execute function as soon as the component mounts |
 
 ## Return Types
 
 | Key     | Type                                                              | Comments                                                                                           |
 | ------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| execute | `() => void`                                                      | a function to execute the the `asyncFunction` and set the appropriate statuses, values, and errors |
+| execute | `() => void`                                                      | A function to execute the the `asyncFunction` and set the appropriate statuses, values, and errors |
 | error   | `Error`                                                           | The error that was thrown in the `asyncFunction`                                                   |
 | status  | `Status.Success`, `Status.Error`, `Status.Pending`, `Status.Idle` | The status of the async                                                                            |
 | value   | `T`                                                               | The Value returned by the `asyncFunction`                                                          |
