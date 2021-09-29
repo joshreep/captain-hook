@@ -1,8 +1,9 @@
 {
-    "name": "captain-hook",
+    "name": "@joshreep/captain-hooks",
     "version": "1.0.0",
     "description": "A collection of handy react hooks",
-    "main": "index.js",
+    "main": "dist/index.js",
+    "source": "src/index.ts",
     "repository": "git@github.com:joshreep/captain-hook.git",
     "author": "Josh Reep <joshreep@gmail.com>",
     "license": "MIT",
@@ -38,12 +39,14 @@
     },
     "peerDependencies": {
         "react": "^17.0.2",
+        "react-router-dom": "^5.2.0",
         "react-test-renderer": "^17.0.2"
     },
     "scripts": {
         "build": "tsc",
         "lint": "esw . --ext .js,.jsx,.ts,.tsx --color",
         "test": "jest",
-        "prepare": "install-self-peers -- --ignore-scripts"
+        "prepare": "install-self-peers -- --ignore-scripts",
+        "prepublishOnly": "yarn build"
     }
 }
