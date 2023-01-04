@@ -1,6 +1,7 @@
 export { default as useAsync } from './useAsync'
 export { default as useEventLister } from './useEventListener'
 export { default as useHistory } from './useHistory'
+export { default as useIdleTimer } from './useIdleTimer'
 export { default as useIsMounted } from './useIsMounted'
 export { default as useLocalStorage } from './useLocalStorage'
 export { default as useMemoCompare, MemoCompareFunction } from './useMemoCompare'
