@@ -21,6 +21,7 @@ yarn add @joshreep/captain-hooks
 -   [`useAsync`](./src/useAsync/README.md) - A hook for rendering dynamic UIs based on the status of an async request.
 -   [`useEventListener`](./src/useEventListener/README.md) - A hook for adding event listeners and automatically cleaning them up.
 -   [`useHistory`](./src/useHistory/README.md) - A hook for adding undo/redo functionality.
+-   [`useIdleTimer`](./src/useIdleTimer/README.md) - A hook for adding idle functionality.
 -   [`useIsMounted`](./src/useIsMounted/README.md) - A hook for determining if the component is mounted or not.
 -   [`useLocalStorage`](./src/useLocalStorage/README.md) - A stateful hook that persists through page refresh.
 -   [`useMemoCompare`](./src/useMemoCompare/README.md) - A hook to memoize a value using a compare function.
