@@ -33,15 +33,14 @@ jobs:
       - name: Install yarn dependencies
         run: yarn install --frozen-lockfile
 
-      - name: lint
-        run: |
-          yarn lint
+      - name: Run Linter
+        run: yarn lint
 
-      - name: test
-        run: |
-          yarn test
+      - name: Run Tests
+        run: yarn test --coverage
 
       - if: ${{ github.ref != 'refs/heads/main' && matrix.node-version == '16.x' && matrix.os == 'ubuntu-latest' }}
+        name: Add Test Coverage Report
         uses: romeovs/lcov-reporter-action@v0.2.16
         with:
           lcov-file: ./coverage/lcov.info
