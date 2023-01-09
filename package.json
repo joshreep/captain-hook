@@ -12,7 +12,7 @@
     "devDependencies": {
         "@team-griffin/install-self-peers": "^1.1.1",
         "@testing-library/dom": "^7.31.0",
-        "@testing-library/react-hooks": "^6.0.0",
+        "@testing-library/react-hooks": "^8.0.1",
         "@testing-library/user-event": "^13.1.9",
         "@types/eslint": "^7.2.11",
         "@types/eslint-plugin-prettier": "^3.1.0",
