@@ -1,4 +1,4 @@
-[![CodeQL](https://github.com/joshreep/captain-hook/actions/workflows/codeql.yml/badge.svg)](https://github.com/joshreep/captain-hook/actions/workflows/codeql.yml)[![CI](https://github.com/joshreep/captain-hook/actions/workflows/ci.yml/badge.svg)](https://github.com/joshreep/captain-hook/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/joshreep/captain-hook/actions/workflows/codeql.yml/badge.svg)](https://github.com/joshreep/captain-hook/actions/workflows/codeql.yml) [![CI](https://github.com/joshreep/captain-hook/actions/workflows/ci.yml/badge.svg)](https://github.com/joshreep/captain-hook/actions/workflows/ci.yml)
 
 # :pirate_flag: Captain Hooks :pirate_flag:
 
