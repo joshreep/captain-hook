@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks'
-import fireEvent from '@testing-library/user-event'
+import user from '@testing-library/user-event'
 import useEventListener from '.'
 
 type SetupProps = {
@@ -22,13 +22,13 @@ function setup({ condition }: SetupProps = {}) {
     return { ...utils, handlerSpy, addEventListenerSpy, removeEventListenerSpy, cleanup }
 }
 
-test('should add new event listener', () => {
+test('should add new event listener', async () => {
     const { addEventListenerSpy, handlerSpy, cleanup } = setup()
 
     expect(addEventListenerSpy).toHaveBeenCalledWith('click', expect.any(Function))
     expect(handlerSpy).not.toHaveBeenCalled()
 
-    fireEvent.click(document.body)
+    await user.click(document.body)
     expect(handlerSpy).toHaveBeenCalledTimes(1)
 
     cleanup()
