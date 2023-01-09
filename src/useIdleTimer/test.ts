@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react-hooks'
+import { act, renderHook } from '@testing-library/react-hooks/native'
 import user from '@testing-library/user-event'
 import useIdleTimer, { IdleTimerState, UseIdleTimerProps } from '.'
 
