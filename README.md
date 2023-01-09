@@ -1,3 +1,5 @@
+[![CodeQL](https://github.com/joshreep/captain-hook/actions/workflows/codeql.yml/badge.svg)](https://github.com/joshreep/captain-hook/actions/workflows/codeql.yml)
+
 # :pirate_flag: Captain Hooks :pirate_flag:
 
 Captain Hooks is a collection of clever react hooks to help make everyday react development a bit more delightful. These hooks are ones that I have used in my own personal projects and thought I'd make them available to anyone else interested.
