@@ -12,7 +12,7 @@
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
     "@team-griffin/install-self-peers": "^1.1.1",
-    "@testing-library/dom": "^7.31.0",
+    "@testing-library/dom": "^8.20.0",
     "@testing-library/react-hooks": "^8.0.1",
     "@testing-library/user-event": "^14.4.3",
     "@types/eslint": "^7.2.11",
