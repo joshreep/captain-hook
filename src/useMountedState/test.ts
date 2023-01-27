@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react'
-import useMountedState from '.'
+import { useMountedState } from '../'
 
 function setup<T>(initialState: T) {
     const utils = renderHook(() => useMountedState<T>(initialState))

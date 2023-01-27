@@ -1,5 +1,5 @@
 import { act, renderHook, waitFor } from '@testing-library/react'
-import useAsync, { Status } from '.'
+import { useAsync, Status } from '../'
 
 type SetupProps<T> = {
     asyncFunction: () => Promise<T>

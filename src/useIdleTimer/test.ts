@@ -1,6 +1,6 @@
 import { act, renderHook, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import useIdleTimer, { IdleTimerState, UseIdleTimerProps } from '.'
+import { useIdleTimer, IdleTimerState, UseIdleTimerProps } from '../'
 
 type SetupProps = Omit<UseIdleTimerProps, 'timeout'> & { timeout?: number }
 

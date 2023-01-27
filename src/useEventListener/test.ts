@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import useEventListener from '.'
+import { useEventListener } from '../'
 
 type SetupProps = {
     condition?: boolean

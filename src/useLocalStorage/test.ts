@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react'
 
-import useLocalStorage from '.'
+import { useLocalStorage } from '../'
 
 function setup() {
     const getItemSpy = jest.spyOn(window.localStorage.__proto__, 'getItem')
