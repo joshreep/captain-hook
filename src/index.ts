@@ -1,5 +1,5 @@
 export { default as useAsync } from './useAsync'
-export { default as useEventLister } from './useEventListener'
+export { default as useEventListener } from './useEventListener'
 export { default as useHistory } from './useHistory'
 export { default as useIdleTimer, IdleTimerState, UseIdleTimerProps } from './useIdleTimer'
 export { default as useIsMounted } from './useIsMounted'

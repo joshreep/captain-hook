@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react'
-import useHistory from '.'
+import { useHistory } from '../'
 
 function setup() {
     const utils = renderHook(() => useHistory('item0'))
