@@ -1,0 +1,17 @@
+.github
+.husky
+.vscode
+coverage
+node_modules
+src
+test-app
+.editorconfig
+.eslintignore
+.eslintrc
+.gitignore
+.prettierignore
+.prettierrc
+commitlint.config.js
+jest.config.js
+tsconfig.build.json
+tsconfig.json
