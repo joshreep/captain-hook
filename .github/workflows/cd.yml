@@ -19,6 +19,7 @@ jobs:
           release-type: node
           package-name: '@josh-reep/captain-hooks'
           bump-minor-pre-major: true
+          default-branch: ${{ github.ref_name }}
 
       - name: Checkout code
         uses: actions/checkout@v3
