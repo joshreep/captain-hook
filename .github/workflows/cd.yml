@@ -55,3 +55,5 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_SECRET }}
         if: ${{ steps.release.outputs.release_created }}
+
+      - run: echo "triggering a new release"
