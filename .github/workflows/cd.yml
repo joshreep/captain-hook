@@ -1,0 +1,56 @@
+name: Continuous Delivery
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  release-please:
+    name: Automated Versioning and Changelog
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release Please
+        id: release
+        uses: google-github-actions/release-please-action@v3
+        with:
+          release-type: node
+          package-name: '@josh-reep/captain-hooks'
+          bump-minor-pre-major: true
+          bump-patch-for-minor-pre-major: true
+          default-branch: ${{ github.ref_name }}
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+        if: ${{ steps.release.outputs.release_created }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: yarn
+          registry-url: 'https://registry.npmjs.org'
+        if: ${{ steps.release.outputs.release_created }}
+
+      - name: Install yarn dependencies
+        run: yarn install --frozen-lockfile
+        if: ${{ steps.release.outputs.release_created }}
+
+      - name: lint
+        run: yarn lint
+        if: ${{ steps.release.outputs.release_created }}
+
+      - name: test
+        run: yarn test
+        if: ${{ steps.release.outputs.release_created }}
+
+      - name: build
+        run: yarn build
+        if: ${{ steps.release.outputs.release_created }}
+
+      - name: Publish to NPM
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_SECRET }}
+        if: ${{ steps.release.outputs.release_created }}

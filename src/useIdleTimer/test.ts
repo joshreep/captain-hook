@@ -1,6 +1,6 @@
-import { act, renderHook } from '@testing-library/react-hooks/native'
+import { act, renderHook, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
-import useIdleTimer, { IdleTimerState, UseIdleTimerProps } from '.'
+import { useIdleTimer, IdleTimerState, UseIdleTimerProps } from '../'
 
 type SetupProps = Omit<UseIdleTimerProps, 'timeout'> & { timeout?: number }
 
@@ -20,13 +20,14 @@ test('should return default state on mount', () => {
 
 test('should do Idle things after timeout', async () => {
     const onIdleSpy = jest.fn()
-    const { result, waitForValueToChange } = setup({ defaultState: IdleTimerState.Active, onIdle: onIdleSpy })
+    const { result } = setup({ defaultState: IdleTimerState.Active, onIdle: onIdleSpy })
     expect(result.current).toBe(IdleTimerState.Active)
     expect(onIdleSpy).not.toHaveBeenCalled()
 
-    await waitForValueToChange(() => result.current)
-    expect(result.current).toBe(IdleTimerState.Idle)
-    expect(onIdleSpy).toHaveBeenCalledTimes(1)
+    await waitFor(() => {
+        expect(result.current).toBe(IdleTimerState.Idle)
+        expect(onIdleSpy).toHaveBeenCalledTimes(1)
+    })
 })
 
 test('should do Active things after keypress', async () => {

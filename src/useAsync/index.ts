@@ -3,7 +3,7 @@ import useMountedState from '../useMountedState'
 
 import { Status } from '../constants'
 
-export default function useAsync<T, E extends Error>(asyncFunction: () => Promise<T>, immediate = true) {
+export default function useAsync<T, E extends Error>(asyncFunction: () => Promise<T>, immediate = false) {
     const [status, setStatus] = useMountedState<Status>(Status.Idle)
     const [value, setValue] = useMountedState<T | null>(null)
     const [error, setError] = useMountedState<E | null>(null)

@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks'
-import useIsMounted from '.'
+import { renderHook } from '@testing-library/react'
+import { useIsMounted } from '../'
 
 function setup() {
     const utils = renderHook(() => useIsMounted())

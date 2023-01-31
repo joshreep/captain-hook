@@ -1,6 +1,6 @@
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook } from '@testing-library/react'
 
-import useMemoCompare, { MemoCompareFunction } from '.'
+import { useMemoCompare, MemoCompareFunction } from '../'
 
 type SetupProps<T> = { next: T; compare: MemoCompareFunction<T> }
 
