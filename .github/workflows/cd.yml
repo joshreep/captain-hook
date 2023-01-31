@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-      - ci/30-npm-deployment-setup
   workflow_dispatch:
 
 jobs:
