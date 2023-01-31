@@ -9,6 +9,7 @@ export default function useAsync<T, E extends Error>(asyncFunction: () => Promis
     const [error, setError] = useMountedState<E | null>(null)
 
     const execute = useCallback(() => {
+        console.debug('executing async function')
         setStatus(Status.Pending)
         setValue(null)
         setError(null)
