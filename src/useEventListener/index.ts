@@ -1,11 +1,25 @@
 import { useCallback, useEffect } from 'react'
 
-const useEventListener = <T extends Element>(
-    eventName: string,
-    handler: EventListener,
-    element: T | (Window & typeof globalThis) = window,
-    condition = true
-) => {
+type GlobalWindow = Window & typeof globalThis
+
+export default function useEventListener<T extends HTMLElement, K extends keyof HTMLElementEventMap>(
+    eventName: K,
+    handler: (this: HTMLElement, ev: HTMLElementEventMap[K]) => void,
+    element?: T,
+    condition?: boolean
+): void
+
+export default function useEventListener<T extends GlobalWindow, K extends keyof WindowEventMap>(
+    eventName: K,
+    handler: (this: Window, ev: WindowEventMap[K]) => void,
+    element?: T,
+    condition?: boolean
+): void
+
+export default function useEventListener<
+    T extends HTMLElement | GlobalWindow,
+    K extends keyof WindowEventMap | keyof ElementEventMap
+>(eventName: K, handler: EventListener, element: T, condition = true) {
     const eventListener = useCallback((event: Event) => handler(event), [handler])
 
     useEffect(() => {
@@ -16,5 +30,3 @@ const useEventListener = <T extends Element>(
         }
     }, [element, eventListener, eventName, condition])
 }
-
-export default useEventListener
