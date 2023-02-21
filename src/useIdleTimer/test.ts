@@ -14,7 +14,7 @@ test('should return default state on mount', () => {
     const { result: result1 } = setup({ defaultState: IdleTimerState.Idle })
     expect(result1.current).toBe(IdleTimerState.Idle)
 
-    const { result: result2 } = setup({ defaultState: IdleTimerState.Active })
+    const { result: result2 } = setup()
     expect(result2.current).toBe(IdleTimerState.Active)
 })
 
@@ -42,4 +42,37 @@ test('should do Active things after keypress', async () => {
 
     expect(result.current).toBe(IdleTimerState.Active)
     expect(onActiveSpy).toHaveBeenCalledTimes(1)
+})
+
+test('should only set active for given events', async () => {
+    const onActiveSpy = jest.fn()
+    const { result } = setup({
+        defaultState: IdleTimerState.Idle,
+        onActive: onActiveSpy,
+        events: ['click'],
+        element: document.body,
+    })
+    expect(result.current).toBe(IdleTimerState.Idle)
+    expect(onActiveSpy).not.toHaveBeenCalled()
+
+    await act(async () => {
+        await user.keyboard('{up}')
+    })
+
+    expect(result.current).toBe(IdleTimerState.Idle)
+    expect(onActiveSpy).not.toHaveBeenCalled()
+
+    await act(async () => {
+        await user.click(document.body)
+    })
+
+    expect(result.current).toBe(IdleTimerState.Active)
+    expect(onActiveSpy).toHaveBeenCalledTimes(1)
+})
+
+test('should throw an error if no timeout is given', () => {
+    // @ts-expect-error we are intentionally not setting the timeout
+    // This is useful for testing scenarios where users are not using
+    // typescript.
+    expect(() => renderHook(() => useIdleTimer({}))).toThrow('`timeout` is a required prop')
 })
