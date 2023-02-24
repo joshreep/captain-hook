@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.4](https://github.com/joshreep/captain-hook/compare/v0.1.3...v0.1.4) (2023-02-24)
+
+
+### Features
+
+* **useScript:** adds useScriptHook ([#62](https://github.com/joshreep/captain-hook/issues/62)) ([e75adf0](https://github.com/joshreep/captain-hook/commit/e75adf01fc06b88d9e470d86c649e4daf867a3fb))
+
 ## [0.1.3](https://github.com/joshreep/captain-hook/compare/v0.1.2...v0.1.3) (2023-02-01)
 
 
