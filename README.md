@@ -28,11 +28,12 @@ yarn add @joshreep/captain-hooks
 -   [`useLocalStorage`](./src/useLocalStorage/README.md) - A stateful hook that persists through page refresh.
 -   [`useMemoCompare`](./src/useMemoCompare/README.md) - A hook to memoize a value using a compare function.
 -   [`useMountedState`](./src/useMountedState/README.md) - An alternative to [`React.useState`](https://reactjs.org/docs/hooks-state.html) that only sets state if component is mounted.
+-   [`useScript`](./src/useScript/README.md) - A hook for dynamically adding a script to a page.
 -   [`useToggle`](./src/useToggle/README.md) - A hook for toggling a boolean state
 
 ## Contributing:
 
-This project uses `yarn` instead of `npm`.  It also uses typescript for static type checking. 
+This project uses `yarn` instead of `npm`. It also uses typescript for static type checking.
 
 ### Installing deps
 
@@ -40,8 +41,8 @@ After you clone the repo, run `yarn install` to install all dev and peer depende
 
 ### Committing changes
 
-When commiting any changes, please follow the conventional commit guidlines as it allows us to automate our changelog and versioning. Commitlint is also installed on this repo, so if you try to commit without adhearing to conventional commits, it will block the commit and flash a warning message. 
+When commiting any changes, please follow the conventional commit guidlines as it allows us to automate our changelog and versioning. Commitlint is also installed on this repo, so if you try to commit without adhearing to conventional commits, it will block the commit and flash a warning message.
 
 ### Testing
 
-Before commiting any changes, it's encouraged to lint your code and run tests. This will happen anyway in the CI workflow, but it is nicer to fail quickly and privately. Run `yarn lint` to lint, `yarn test` to run the test suites. If you are introducing any new functionality or changing any existing funtionality, please provide appropriate test coverage. 
+Before commiting any changes, it's encouraged to lint your code and run tests. This will happen anyway in the CI workflow, but it is nicer to fail quickly and privately. Run `yarn lint` to lint, `yarn test` to run the test suites. If you are introducing any new functionality or changing any existing funtionality, please provide appropriate test coverage.

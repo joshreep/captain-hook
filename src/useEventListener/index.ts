@@ -23,10 +23,16 @@ export default function useEventListener<
     const eventListener = useCallback((event: Event) => handler(event), [handler])
 
     useEffect(() => {
-        if (condition) element.addEventListener?.(eventName, eventListener)
+        if (condition) {
+            if (element) element.addEventListener?.(eventName, eventListener)
+            else window.addEventListener(eventName, eventListener)
+        }
 
         return () => {
-            if (condition) element.removeEventListener?.(eventName, eventListener)
+            if (condition) {
+                if (element) element.removeEventListener?.(eventName, eventListener)
+                else window.addEventListener(eventName, eventListener)
+            }
         }
     }, [element, eventListener, eventName, condition])
 }
