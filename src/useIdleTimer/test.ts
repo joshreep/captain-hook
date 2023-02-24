@@ -1,6 +1,7 @@
 import { act, renderHook, waitFor } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { useIdleTimer, IdleTimerState, UseIdleTimerProps } from '../'
+import { mockConsole } from '../testUtils'
 
 type SetupProps = Omit<UseIdleTimerProps, 'timeout'> & { timeout?: number }
 
@@ -71,8 +72,10 @@ test('should only set active for given events', async () => {
 })
 
 test('should throw an error if no timeout is given', () => {
+    const { restoreConsole } = mockConsole('error')
     // @ts-expect-error we are intentionally not setting the timeout
     // This is useful for testing scenarios where users are not using
     // typescript.
     expect(() => renderHook(() => useIdleTimer({}))).toThrow('`timeout` is a required prop')
+    restoreConsole()
 })
