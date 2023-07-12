@@ -34,7 +34,7 @@ test('should add new event listener', async () => {
     cleanup()
 })
 
-test('should remove eventListener ', () => {
+test('should remove eventListener', () => {
     const { removeEventListenerSpy, unmount, cleanup } = setup()
 
     expect(removeEventListenerSpy).not.toHaveBeenCalledWith('click', expect.any(Function))

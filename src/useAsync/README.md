@@ -31,7 +31,7 @@ function App() {
 ```ts
 export default function useAsync<T, E extends Error>(
     asyncFunction: () => Promise<T>,
-    immediate = true
+    immediate = true,
 ): { execute: () => void; error: E; status: Status; value: T }
 ```
 

@@ -33,7 +33,7 @@ export default function useEventListener<T extends Element>(
     eventName: string,
     handler: EventListener,
     element: T | (Window & typeof globalThis) = window,
-    condition: boolean = true
+    condition: boolean = true,
 ): void
 ```
 

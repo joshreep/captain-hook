@@ -6,19 +6,19 @@ export default function useEventListener<T extends HTMLElement, K extends keyof 
     eventName: K,
     handler: (this: HTMLElement, ev: HTMLElementEventMap[K]) => void,
     element?: T,
-    condition?: boolean
+    condition?: boolean,
 ): void
 
 export default function useEventListener<T extends GlobalWindow, K extends keyof WindowEventMap>(
     eventName: K,
     handler: (this: Window, ev: WindowEventMap[K]) => void,
     element?: T,
-    condition?: boolean
+    condition?: boolean,
 ): void
 
 export default function useEventListener<
     T extends HTMLElement | GlobalWindow,
-    K extends keyof WindowEventMap | keyof ElementEventMap
+    K extends keyof WindowEventMap | keyof ElementEventMap,
 >(eventName: K, handler: EventListener, element: T, condition = true) {
     const eventListener = useCallback((event: Event) => handler(event), [handler])
 

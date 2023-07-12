@@ -25,7 +25,7 @@ export default function useScript(src: string): Status {
         (event: Event) => {
             scriptElement?.setAttribute('data-status', getStatusFromEvent(event))
         },
-        [scriptElement]
+        [scriptElement],
     )
 
     const setStateFromEvent = useCallback((event: Event) => {
