@@ -22,7 +22,7 @@ function setupSuccess<T>({ immediate, timeout = 0 }: SetupSuccessProps<T>) {
                 setTimeout(() => {
                     resolve('foo')
                 }, timeout)
-            })
+            }),
     )
     const utils = setup({ asyncFunction, immediate })
 
@@ -36,7 +36,7 @@ function setupFailure<T>({ immediate, timeout = 0 }: SetupFailureProps<T>) {
                 setTimeout(() => {
                     reject(new Error('bummer...'))
                 }, timeout)
-            })
+            }),
     )
     const utils = setup({ asyncFunction, immediate })
 

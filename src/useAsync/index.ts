@@ -19,8 +19,8 @@ export default function useAsync<T, E extends Error>(asyncFunction: () => Promis
                 setStatus(Status.Success)
             })
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            .catch((error: any) => {
-                setError(error)
+            .catch((error: unknown) => {
+                setError(error as E)
                 setStatus(Status.Error)
             })
         // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -1,6 +1,5 @@
 {
   "eslint.alwaysShowStatus": true,
-  "eslint.packageManager": "yarn",
   "eslint.trace.server": "messages",
   "eslint.validate": ["typescript", "typescriptreact"],
   "cSpell.words": ["react", "react's"]
