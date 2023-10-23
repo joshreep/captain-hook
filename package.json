@@ -11,7 +11,7 @@
   "prepare": "install-peers",
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",
-    "@commitlint/config-conventional": "^17.4.2",
+    "@commitlint/config-conventional": "^18.0.0",
     "@team-griffin/install-self-peers": "^1.1.1",
     "@testing-library/dom": "^9.0.0",
     "@testing-library/jest-dom": "^6.0.0",
