@@ -6,7 +6,7 @@ Since we are currently not in v1, all newest versions will have security updates
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 0.1.4   | :white_check_mark: |
+| 1.0.1   | :white_check_mark: |
 
 ## Reporting a Vulnerability
 
