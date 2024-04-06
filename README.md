@@ -28,6 +28,7 @@ yarn add @joshreep/captain-hooks
 -   [`useLocalStorage`](./src/useLocalStorage/README.md) - A stateful hook that persists through page refresh.
 -   [`useMemoCompare`](./src/useMemoCompare/README.md) - A hook to memoize a value using a compare function.
 -   [`useMountedState`](./src/useMountedState/README.md) - An alternative to [`React.useState`](https://reactjs.org/docs/hooks-state.html) that only sets state if component is mounted.
+-   [`usePrevious`](./src/usePrevious/README.md) - A hook for comparing the current state of a value and the previous state
 -   [`useScript`](./src/useScript/README.md) - A hook for dynamically adding a script to a page.
 -   [`useToggle`](./src/useToggle/README.md) - A hook for toggling a boolean state
 
