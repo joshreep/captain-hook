@@ -42,7 +42,7 @@ jobs:
         run: yarn test
 
       - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
 
       - name: build
         run: yarn build
