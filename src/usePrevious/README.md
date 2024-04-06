@@ -18,15 +18,15 @@ function useInitialLoading() {
     const status = useSomeAsyncProcess()
     const previousStatus = usePrevious<Status>(status)
 
-    const isInitialLoading = previousStatus === undefined && status === Status.Loading
+    const isInitiallyLoading = previousStatus === undefined && status === Status.Loading
     const isReloading = previousStatus !== undefined && status === Status.Loading
 
-    //... Do what you feel like with that infomation
+    //... Do what you feel like with that information
 }
 ```
 
 ### Signature:
 
 ```ts
-export default function useIdleTimer<T>(value: T): T
+export default function useIdleTimer<T>(value: T): T | undefined
 ```
