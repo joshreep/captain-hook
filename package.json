@@ -1,6 +1,6 @@
 {
   "name": "@joshreep/captain-hooks",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A collection of handy react hooks",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

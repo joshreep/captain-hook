@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/joshreep/captain-hook/compare/v1.0.0...v1.0.1) (2024-04-06)
+
+
+### Bug Fixes
+
+* updates node version to v18 ([#331](https://github.com/joshreep/captain-hook/issues/331)) ([ec12f14](https://github.com/joshreep/captain-hook/commit/ec12f14049f98027833d37b96917badc5fcbca3f))
+
 ## 1.0.0 (2024-04-06)
 
 
